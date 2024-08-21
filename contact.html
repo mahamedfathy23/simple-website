@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Portfolio</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact">
+        <h1>Contact Me</h1>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <section class="social-media">
+        <h2>Connect with me on social media</h2>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/mohamed-fathy-b68b46320/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/muhammed.fathi.923/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/muhammeddfathy_/" target="_blank">Instagram</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <!-- Include the EmailJS library -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your user ID\/
+        (function() {
+            emailjs.init("x7xE-JS8RZWouYLxa"); // actual EmailJS  ID
+        })();
+
+        // Add event listener to handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Send the form data using EmailJS
+            emailjs.sendForm('service_o9khlqo', 'template_vtkv6f9', this)
+                .then(function(response) {
+                    alert('Email sent successfully!');
+                    document.getElementById('contact-form').reset(); // Clear the form fields
+                }, function(error) {
+                    alert('Failed to send email. Please try again.');
+                    console.log('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
